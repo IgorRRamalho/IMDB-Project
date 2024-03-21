@@ -4,24 +4,11 @@ import { useQuery, gql } from "@apollo/client";
 
 const GET_MOVIE = gql`
   query GetMovie {
-      page
-      results {
-        adult
-        backdrop_path
-        genre_ids
-        id
-        original_language
-        original_title
-        overview
-        popularity
-        poster_path
-        release_date
-        title
-        video
-        vote_average
-        vote_count
-      }
+    page
+    results{
+      id
     }
+  }
 `;
 
 export default function MovieList() {
@@ -30,7 +17,7 @@ export default function MovieList() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
-  return data.results.map(({ id, original_title, release_date }) => (
+  return data.results.map(({ id, original_title, release_date}) => (
     <div key={id}>
       <h3>{original_title}</h3>
       {/* <img width="400" height="250" alt="location-reference" src={`${photo}`} /> */}
