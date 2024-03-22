@@ -1,67 +1,54 @@
-// eslint-disable-next-line no-unused-vars
-import { Component } from "react";
-import { useQuery, gql } from "@apollo/client";
+import React, { useState, useEffect } from 'react';
 
-const GET_MOVIE = gql`
-  query GetMovie {
-      page
-      results {
-        adult
-        backdrop_path
-        genre_ids
-        id
-        original_language
-        original_title
-        overview
-        popularity
-        poster_path
-        release_date
-        title
-        video
-        vote_average
-        vote_count
+function MovieList() {
+  const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMjEzODE5MzM0NDlkNWQxNWY3ZDBiNmE2YjFmODdhMSIsInN1YiI6IjYxMTcxNmY0MzUwMzk4MDAyZGI3Yzk1YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ys_LkZ7sDiPL14OdvOVP0N5VZr3-IbyR1G4BwIeCLXs'
+        }
+      };
+
+      try {
+        const response = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options);
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+        setMovies(data.results);
+      } catch (error) {
+        setError(error.message);
       }
-    }
-`;
+    };
 
-export default function MovieList() {
-  const { loading, error, data } = useQuery(GET_MOVIE);
+    fetchData();
+  }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error : {error.message}</p>;
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
-  return data.results.map(({ id, original_title, release_date }) => (
-    <div key={id}>
-      <h3>{original_title}</h3>
-      {/* <img width="400" height="250" alt="location-reference" src={`${photo}`} /> */}
-      <br />
-      <b>Release_date:</b>
-      <p>{release_date}</p>
-      <br />
+  return (
+    <div>
+      <h1>Popular Movies</h1>
+      <div className="movie-list">
+        {movies.map(movie => (
+          <div key={movie.id} className="movie">
+            <h2>{movie.title}</h2>
+            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+            <p>{movie.overview}</p>
+            <p>Release Date: {movie.release_date}</p>
+            <p>Vote Average: {movie.vote_average}</p>
+          </div>
+        ))}
+      </div>
     </div>
-  ));
+  );
 }
 
-// {
-//     "page": 1,
-//     "results": [
-//       {
-//         "adult": false,
-//         "backdrop_path": "/gMJngTNfaqCSCqGD4y8lVMZXKDn.jpg",
-//         "genre_ids": [
-//           28,
-//           12,
-//           878
-//         ],
-//         "id": 640146,
-//         "original_language": "en",
-//         "original_title": "Ant-Man and the Wasp: Quantumania",
-//         "overview": "Super-Hero partners Scott Lang and Hope van Dyne, along with with Hope's parents Janet van Dyne and Hank Pym, and Scott's daughter Cassie Lang, find themselves exploring the Quantum Realm, interacting with strange new creatures and embarking on an adventure that will push them beyond the limits of what they thought possible.",
-//         "popularity": 8567.865,
-//         "poster_path": "/ngl2FKBlU4fhbdsrtdom9LVLBXw.jpg",
-//         "release_date": "2023-02-15",
-//         "title": "Ant-Man and the Wasp: Quantumania",
-//         "video": false,
-//         "vote_average": 6.5,
-//         "vote_count": 1886
-//     }
+export default MovieList;

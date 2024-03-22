@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import { Component } from "react";
 import MovieList from "./MovieList";
+import CardMovie from "./CardMovie";
 
 export default function Body() {
   return (
@@ -12,7 +13,9 @@ export default function Body() {
           est similique nulla cumque obcaecati sunt ducimus cum possimus
           necessitatibus.
         </p>
+
         <div className="cards-wrapper"></div>
+        <CardMovie/>
       </div>
     </>
   );

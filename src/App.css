@@ -10,7 +10,6 @@
   padding: 0;
 }
 
-
 header {
   background-color: #032541;
   width: 100%;
@@ -53,7 +52,6 @@ a {
 .nav-bar {
   display: flex;
   justify-content: space-around;
-  
 }
 
 .login {
@@ -61,8 +59,7 @@ a {
   margin-right: 2em;
 }
 
-
-.content-wrapper{
+.content-wrapper {
   width: 100%;
   height: 100;
   /* background-color: red; Cor de fundo apenas para visualização */
@@ -70,10 +67,62 @@ a {
   display: flex;
   flex-wrap: wrap;
   padding: 30px 40px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  display: flex;
+  margin: 2em;
+  width: 182px;
+  height: 365px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+  align-items: flex-start;
+  color: black;
+  border: 1px solid #e3e3e3;
+  border-radius: 1em;
+  
+}
+
+.movie-poster {
+  display: inline-block;
+  width: 100%;
+  height: 80%;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  border: 0;
+  
+
+}
+
+.content{
+    width: 100%;
+    padding: 16px 10px 12px;
+    position: relative;
+    white-space: normal;
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    background-color: white;
+    box-shadow: 0px 20px 36px 15px rgba(0,0,0,0.1);
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
     
 }
 
-.main{
-    display: flex;
-    flex-direction: column;
+.description{
+  font-size: 1em;
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, .6);
+}
+
+.title{
+  font-weight: 700;
 }

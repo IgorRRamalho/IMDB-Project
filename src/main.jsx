@@ -1,20 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
-
-const client = new ApolloClient({
-  uri: "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
-  cache: new InMemoryCache(),
-});
-
-
-// Supported in React 18+
+// Create a root
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
+// Render the component using the root
 root.render(
-  <ApolloProvider client={client}>
+  <React.StrictMode>
     <App />
-  </ApolloProvider>
+  </React.StrictMode>
 );
