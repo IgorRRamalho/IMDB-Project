@@ -38,25 +38,25 @@ function MovieList() {
   }
 
   return (
-    <div>
-      <h1>Popular Movies</h1>
-      <div className="movie-list">
-        {movies.map((movie) => (
-          <div key={movie.id} className="movie">
-            <div className="card">
-              <img
-                className="movie-poster"
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-              />
-              <div className="content">
-                <h3 className="title"> {movie.title}</h3>
-                <p className="description"> {movie.release_date}</p>
-              </div>
-            </div>
+    <div className="cards-wrapper">
+      {movies.map((movie) => (
+        <div key={movie.id} className="card">
+          <img
+            className="movie-poster"
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={movie.title}
+          />
+          <div className="content">
+            <h3>
+              {" "}
+              <a className="title" href="#">
+                {movie.title}
+              </a>
+            </h3>
+            <p className="description"> {movie.release_date}</p>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 }
