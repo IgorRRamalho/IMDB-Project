@@ -14,8 +14,11 @@ export default function Body() {
           necessitatibus.
         </p>
 
-        <div className="cards-wrapper"></div>
-        <CardMovie/>
+        <div className="cards-wrapper">
+        <MovieList/>
+        </div>
+       
+       
       </div>
     </>
   );
