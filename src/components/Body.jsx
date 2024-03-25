@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable no-unused-vars */
 import { Component } from "react";
 import MovieList from "./MovieList";
 import CardMovie from "./CardMovie";

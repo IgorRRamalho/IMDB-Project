@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Component } from "react";
 import Logo from "../assets/logo_original.svg";
 

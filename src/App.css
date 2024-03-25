@@ -77,7 +77,6 @@ a {
 
 .card {
   display: flex;
-  margin: 2em;
   width: 13em;
   height: 365px;
   flex-direction: row;
@@ -88,7 +87,7 @@ a {
   color: black;
   border: 1px solid #e3e3e3;
   border-radius: 1em;
-  margin: 2.5em 1em 0em 0em;
+  margin: 2em 1.3em 1em 0em;
 }
 
 .movie-poster {
@@ -102,6 +101,7 @@ a {
 
 .content {
   width: 100%;
+  height: 78px;
   padding: 16px 10px 12px;
   position: relative;
   white-space: normal;
@@ -125,22 +125,21 @@ a {
 
 .title {
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18.5px;
   color: black;
 }
 
-
 .title:hover {
-  color: #01b4e4;;
+  color: #01b4e4;
 }
 
 .cards-wrapper {
   width: 100%;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
-  align-content: center;
+  justify-content: center;
+  align-content: flex-start;
+  flex-direction: row;
 }
 
 h1 {
